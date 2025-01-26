@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    width: 100vw;
+    height: 100dvh;
+}
+
+.start-game{
+    justify-content: center;
+}
+
+main{
+    height: 100%;
+}
+
+.apex-logo{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg{
+        overflow: visible;
+    }
+}
+
+
+.frame {
+    transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .slider-container{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+.slider{
+    position: relative;
+    width: 500%;
+    animation: slides 20s ease infinite;
+}
+
+.slide{
+    position: relative;
+    width: 20%;
+    height: 100vh;
+    float: left;
+
+    h2{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        margin-bottom: 10rem;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 5rem;
+        color: #fff;
+        font-weight: 500;
+    }
+}
+
+    /* Cores para os frames */
+    .frame1 { background-color: #00B1EB ;}
+    .frame2 { background-color: #EF7D00; }
+    .frame3 { background-color: #AFCA0B; }
+    .frame4 { background-color: #E72582; }
+    .frame5 { background-color: #FFBB00; }
+
+@keyframes slides {
+    0% {
+        left: 0;
+    }
+    16% {
+        left: 0; /* Slide 1 visível */
+    }
+    25% {
+        left: -100%; /* Slide 2 entra */
+    }
+    41% {
+        left: -100%; /* Slide 2 visível */
+    }
+    50% {
+        left: -200%; /* Slide 3 entra */
+    }
+    58% {
+        left: -200%; /* Slide 3 visível */
+    }
+    66% {
+        left: -300%; /* Slide 4 entra */
+    }
+    75% {
+        left: -300%; /* Slide 4 visível */
+    }
+    83% {
+        left: -400%; /* Slide 5 entra */
+    }
+    91% {
+        left: -400%; /* Slide 5 visível */
+    }
+    100% {
+        left: 0; /* Retorna ao primeiro slide */
+    }
+}
