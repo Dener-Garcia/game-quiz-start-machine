@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  --font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  --font-weight: 400;
+  --colorBgPrimary: #F3F3F6;
+  --colorBgSecondary: #ffffff;
+  --colorAccentPrimary: #2525D0;
+  --colorAccentPrimaryHover: #2929A3;
+  --colorAccentSecondary: #F8F8FC;
+  --colorAccentSecondaryHover: #EAEAF6;
+  --colorAccentTertiary: #5A328A;
+  --colorFeedbackInfo: #EEF2FC;
+  --colorFeedbackInfoAccent: #A8BDF0;
+  --colorFeedbackError: #FDEDF2;
+  --colorFeedbackErrorAccent: #ED5A8B;
+  --colorFeedbackWarning: #F8FAD1;
+  --colorFeedbackWarningAccent: #E9C534;
+  --colorFeedbackSuccess: #BCF0D6;
+  --colorFeedbackSuccessAccent: #16CA52;
+  --colorContrastDark: #F4F4F6;
+  --colorContrastLight: #26262C;
+  --colorNeutral100: #383842;
+  --colorNeutral200: #676779;
+  --colorNeutral300: #9C9CAB;
+  --colorNeutral400: #D8D8DE;
+  --colorNeutral500: #E9E9EC;
+  --fontTitleHero: 3rem;
+  --fontSubTitle: 2rem;
+  --fontTextLarge: 1.5rem;
+  --fontTextMedium: 1.25rem;
+  --fontText: 1rem;
+  --fontLabel: 0.875rem;
+  --fontSmallLabel: 0.75rem;
+
+  --colorAccent: #9381ff;
+  --colorAccentHover: #b8b8ff;
+  --colorAccentText: #5e2bff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #004F9F;
+}
+
+main{
+    height: 100vh;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+#mapa {
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 680px;
+    background-color: transparent;
+    border: 3px solid var(--colorBgPrimary);
+    border-radius: 1rem;
+    background-image: url('../../public/assets/images/bg-game.svg');
+    background-repeat: no-repeat;
+    background-position: right top;
+    overflow: hidden;
+}
+
+#longFlag{
+    position: absolute;
+    left: -200px;
+    top: -80px;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+#longFlag2{
+    position: absolute;
+    right: -280px;
+    bottom: -300px;
+    transform: rotate(20deg);
+    opacity: 0.8;
+    z-index: -1;
+}
+
+#brFlag{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.boneco {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+
+    img {
+        height: 100%;
+    }
+}
+
+.stand {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+    transform: scale(1.2);
+}
+
+.step{
+    position: absolute;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 999px;
+    background-color: var(--colorBgPrimary);
+    font-size: 1.5rem;
+    z-index: -1;
+    animation: bouncy2 1s ease infinite alternate;
+    transform: scale(0.5);
+}
+
+
+.machine img {
+    width: 190px;
+}
+
+.mark-atual{
+    position: absolute;
+    top: 90px;
+    left: -10px;
+}
+
+.mark-future{
+    position: absolute;
+    top: 90px;
+    left: 20px;
+}
+
+.mark-phase3{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.mark-beahead{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+/* From Uiverse.io by adamgiebl */ 
+.botao-jogo  {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 1rem;
+    color: white;
+    background: #ad5389;
+    background-color: var(--colorAccentPrimaryHover);
+    border: solid 2px var(--colorAccent);
+    letter-spacing: 0.05em;
+    border-radius: 16px;
+    font-size: 1.5rem;
+    transition: 1s;
+    animation: bouncy 0.8s ease alternate infinite;
+
+    
+    svg {
+        margin-right: 3px;
+        transform: rotate(30deg);
+        transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+      }
+
+  }
+  
+  
+  .botao-jogo:hover svg {
+    transform: translateX(5px) rotate(90deg);
+  }
+  
+  .botao-jogo:hover span {
+    transform: translateX(7px);
+  }
+  
+@keyframes bouncy {
+    0%{
+        transform: rotate(-5deg);
+    }
+    100%{
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes bouncy2 {
+    0%{
+        transform: scale(0.5) scaleX(0.5);
+    }
+    100%{
+        transform: rotate(5deg) scale(1.2);
+    }
+}
+
+.effect{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    left: 0;
+    border-radius: 999px;
+    background-color: #00B1EB;
+    filter: blur(100px);
+    z-index: -2;
+}
+
+.effect2{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 20%;
+    right: 0;
+    border-radius: 999px;
+    background-color: #00B1EB;
+    filter: blur(100px);
+    z-index: -2;
+}
+
+.made-for{
+    min-height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    background-color: var(--colorBgPrimary);
+    border-radius: 999px;
+}
+
+.easteregg{
+    position: relative;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.dev{
+    width: 120px;
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    visibility: hidden;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--colorAccent);
+    font-size: 1rem;
+    font-weight: 500;
+    transform: scale(0.01);
+    transition: 0.4s;
+
+    a{
+        color: var(--colorContrastLight);
+
+        &:hover{
+        text-decoration: underline;
+        font-weight: 500;
+
+            color: var(--colorContrastDark);
+        }
+    }
+
+}
+
+.easteregg:hover .dev{
+    visibility: visible;
+    display: flex;
+    transform: scale(1);
+}

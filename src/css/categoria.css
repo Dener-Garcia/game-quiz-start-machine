@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    --font-weight: 400;
+    --colorBgPrimary: #F3F3F6;
+    --colorBgSecondary: #ffffff;
+    --colorAccentPrimary: #2525D0;
+    --colorAccentPrimaryHover: #2929A3;
+    --colorAccentSecondary: #F8F8FC;
+    --colorAccentSecondaryHover: #EAEAF6;
+    --colorAccentTertiary: #5A328A;
+    --colorFeedbackInfo: #EEF2FC;
+    --colorFeedbackInfoAccent: #A8BDF0;
+    --colorFeedbackError: #FDEDF2;
+    --colorFeedbackErrorAccent: #ED5A8B;
+    --colorFeedbackWarning: #F8FAD1;
+    --colorFeedbackWarningAccent: #E9C534;
+    --colorFeedbackSuccess: #BCF0D6;
+    --colorFeedbackSuccessAccent: #16CA52;
+    --colorContrastDark: #F4F4F6;
+    --colorContrastLight: #26262C;
+    --colorNeutral100: #383842;
+    --colorNeutral200: #676779;
+    --colorNeutral300: #9C9CAB;
+    --colorNeutral400: #D8D8DE;
+    --colorNeutral500: #E9E9EC;
+    --fontTitleHero: 3rem;
+    --fontSubTitle: 2rem;
+    --fontTextLarge: 1.5rem;
+    --fontTextMedium: 1.25rem;
+    --fontText: 1rem;
+    --fontLabel: 0.875rem;
+    --fontSmallLabel: 0.75rem;
+
+    --colorAccent: #9381ff;
+    --colorAccentHover: #b8b8ff;
+    --colorAccentText: #5e2bff;
+}
+
+.cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn-primary {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: solid 2px var(--colorAccent);
+    border-radius: 1rem;
+    background-color: var(--colorAccentPrimary);
+    color: var(--colorContrastDark);
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+        background-color: var(--colorAccentPrimaryHover);
+    }
+}
+
+.btn-secondary {
+    display: flex;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border: solid 1px var(--colorAccent);
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--colorContrastDark);
+    background-color: transparent;
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    &:hover {
+        background-color: var(--colorAccentPrimary);
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url("/public/assets/images/bg-game.svg") no-repeat center top;
+    background-color: #004F9F;
+}
+
+main{
+    width: 100vw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+h1{
+    color: #fff;
+    font-size: 2rem;
+}
+
+.categorias-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.categoria {
+    min-width: 200px;
+    min-height: 200px;
+    padding: 1rem;
+    background-color: var(--colorBgPrimary);
+    border-radius: 1rem;
+    border: solid 2px var(--colorAccent);
+}
+
+.item {
+    margin-top: 0.5rem;
+    min-height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background-color: var(--colorFeedbackInfoAccent);
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: grab;
+}
+
+.correct {
+    background-color: var(--colorFeedbackSuccessAccent);
+}
+
+.wrong {
+    background-color: var(--colorFeedbackErrorAccent);
+}
+
+
+.made-for{
+
+    min-height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 1rem;
+    background-color: var(--colorBgPrimary);
+
+}
+
+.easteregg{
+    position: relative;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.dev{
+    width: 120px;
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    visibility: hidden;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--colorAccent);
+    font-size: 1rem;
+    font-weight: 500;
+    transform: scale(0.01);
+    transition: 0.4s;
+
+    a{
+        color: var(--colorContrastLight);
+
+        &:hover{
+        text-decoration: underline;
+        font-weight: 500;
+
+            color: var(--colorContrastDark);
+        }
+    }
+
+}
+
+.easteregg:hover .dev{
+    visibility: visible;
+    display: flex;
+    transform: scale(1);
+}
