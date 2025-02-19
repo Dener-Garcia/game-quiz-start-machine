@@ -9,28 +9,31 @@
 </head>
 <body>
   <main>
+    <a class="exit-button" href="../../index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-arrow-left"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m12 8-4 4 4 4"/><path d="M16 12H8"/></svg>
+      <p>Exit Factory</p>
+    </a>
     <div id="mapa">
+        <img src="/public/assets/images/player-right-front.svg" alt="player" id="boneco" class="boneco"/>
 
-        <img src="/public/assets/images/player-right-front.svg" alt="player" id="boneco" class="boneco" style="top: 100px; left: 100px;" />
-
-        <div class="stand bat-atual" style="top: 150px; left: 250px;" data-jogo="kaban" data-link="/src/pages/kaban1.html">
+        <div class="stand bat-atual" style="top: 10px; left: 400px" data-jogo="Meet our CBN" data-link="/src/pages/kaban1.html">
             <img src="/public/assets/images/game1.svg" alt="machine"/>
             <img src="/public/assets/images/makr.svg" alt="machine" class="mark-atual"/>
             <span class="step" style="left: -2rem;">1</span>
         </div>
 
-        <div class="stand future" style="top: 10px; left: 400px;" data-jogo="kaban" data-link="/src/pages/categoria.html">
+        <div class="stand future" style="top: 150px; left: 200px;" data-jogo="Where to be focused" data-link="/src/pages/categoria.html">
             <img src="/public/assets/images/game2.svg" alt="digital board"/>
             <img src="/public/assets/images/makr.svg" alt="machine" class="mark-future"/>
             <span class="step">2</span>
         </div>
 
-        <div class="stand phase3" style="top: 380px; left: 30px;" data-jogo="jogo-memoria" data-link="/src/pages/flip-card.html">
+        <div class="stand phase3" style="top: 380px; left: 30px;" data-jogo="New Concepts for Ph3" data-link="/src/pages/flip-card.html">
             <img src="/public/assets/images/machine.svg" alt="machines"/>
             <img src="/public/assets/images/makr.svg" alt="machine" class="mark-phase3"/>
             <span class="step">3</span>
         </div>
-        <div class="stand beahead" style="top: 420px; left: 480px;" data-jogo="quebra-cabeca" data-link="/src/pages/quebra-cabeca.html">
+        <div class="stand beahead" style="top: 380px; left: 440px;" data-jogo="Udi Factory Role" data-link="/src/pages/quebra-cabeca.html">
             <img src="/public/assets/images/game4.svg" alt="people board"/>
             <img src="/public/assets/images/makr.svg" alt="machine" class="mark-beahead"/>
             <span class="step">4</span>
@@ -58,7 +61,9 @@
     </div>
 
     <div class="made-for">
-      <audio src="/public/assets/audios/bg-music-main.mp3" autoplay loop controls></audio>
+      <!--
+        <audio src="/public/assets/audios/bg-music-main.mp3" autoplay loop controls></audio>
+        -->
       Developed <span class="easteregg"><p>by</p>
           <div class="dev"><a href="https://www.linkedin.com/in/denergarcia/">Dener Garcia</a></div>
       </span><img src="/public/assets/apex-logo.svg" alt="Apex team logo" /> digital cell from BAT - Brazil
@@ -67,10 +72,6 @@
   </main>
   <div class="effect"></div>
   <div class="effect2"></div>
-
-
-
-
 </body>
 
 </html>

@@ -3,9 +3,24 @@ const boneco = document.getElementById('boneco');
 const stands = document.querySelectorAll('.stand');
 const botaoJogo = document.getElementById('botaoJogo');
 
-let posX = 100;
-let posY = 100;
 let jogoAtual = null;
+let posX = 100
+let posY = 100
+
+window.addEventListener('DOMContentLoaded', () => {
+    const posXStorage = localStorage.getItem('posX');
+    const posYStorage = localStorage.getItem('posY');
+
+    if (posXStorage && posYStorage) {
+        posX = parseInt(posXStorage);
+        posY = parseInt(posYStorage);
+
+        boneco.style.top = posY + 'px';
+        boneco.style.left = posX + 'px';
+    }
+});
+
+
 
 document.addEventListener('keydown', (e) => {
     switch (e.key) {
@@ -35,6 +50,7 @@ function verificarProximidade() {
     jogoAtual = null;
     botaoJogo.style.display = 'none';
 
+
     stands.forEach(stand => {
         const standRect = stand.getBoundingClientRect();
         const bonecoRect = boneco.getBoundingClientRect();
@@ -48,6 +64,8 @@ function verificarProximidade() {
             console.log(stand)
             jogoAtual = stand.dataset.link;
             botaoJogo.style.display = 'block';
+            console.log("nome jogo", stand)
+            botaoJogo.innerText= stand.dataset.jogo
             audioPlay("yeah")
         }
     });
@@ -55,6 +73,11 @@ function verificarProximidade() {
 
 botaoJogo.addEventListener('click', () => {
     botaoJogo.setAttribute("href", jogoAtual)
+    localStorage.setItem('posX', posX);
+    localStorage.setItem('posY', posY);
+
+    // Redireciona para o link do stand
+    window.location.href = jogoAtual;
 });
 
 function audioPlay(song) {

@@ -1,4 +1,4 @@
-import questions from "../helpers/questions/packer-questions copy.mjs"
+import questions from "../helpers/questions/maker-questions.mjs"
 const cardStatus = document.querySelector(".card-status .meter")
 const cardSpeed = document.querySelector(".card-meter .meter")
 const pushbuttonsContainer = document.querySelector(".pushbuttons-container")
@@ -25,8 +25,8 @@ let phase = 1
 const incrementSpeed = () => {
     if (!machineRunning || decrementing) return
 
-    if (speed < 360) {
-        speed = speed + 1
+    if (speed < 8560) {
+        speed = speed + 50
         cardSpeed.innerHTML = `
         <span>${speed}</span>
         <p>CPM</p>
@@ -41,12 +41,12 @@ const incrementSpeed = () => {
 const decrementSpeed = () => {
 
     if (speed > 0) {
-        speed = speed - 10
+        speed = speed - 400
         cardSpeed.innerHTML = `
             <span>${speed}</span>
             <p>CPM</p>
     `
-        setTimeout(decrementSpeed, 50)
+        setTimeout(decrementSpeed, 40)
     } else {
         speed = 0
         cardSpeed.innerHTML = `
@@ -63,12 +63,12 @@ const decrementSpeed = () => {
 const oscillateSpeed = () => {
     if (!oscillating || decrementing) return;
 
-    speed = speed === 360 ? 356 : 360;
+    speed = speed === 8560 ? 8556 : 8560;
     cardSpeed.innerHTML = `
         <span>${speed}</span>
         <p>CPM</p>
     `;
-    setTimeout(oscillateSpeed, 400);
+    setTimeout(oscillateSpeed, 8000);
 };
 
 
@@ -111,7 +111,7 @@ pushbuttonStart.addEventListener("click", () => {
     if (phase == 1) {
         setTimeout(() => {
             decrementSpeed()
-            showMessage("Falha: FALTA DE CIGARROS NO FUNIL", "status-error")
+            showMessage("Falha: QUEBRA PAPEL PONTEIRA", "status-error")
 
             suggestions.classList.remove("d-none")
             pushbuttonsContainer.classList.add("d-none")
@@ -120,13 +120,13 @@ pushbuttonStart.addEventListener("click", () => {
             optionOneFake.classList.add("btn-option")
             optionOneFake.innerHTML = `
             <span>1</span>
-            <p>Fazer C.I.L na área do fúnil</p>
+            <p>Conferir cola do papel</p>
             `   
             const optionTwoFake = document.createElement("Button")
             optionTwoFake.classList.add("btn-option")
             optionTwoFake.innerHTML = `
             <span>2</span>
-            <p>Conferir parâmetros no caderno de C.L</p>
+            <p>Checar parâmetros no caderno de C.L</p>
             `
             
             const optionThreeFake = document.createElement("Button")
@@ -161,7 +161,7 @@ pushbuttonStart.addEventListener("click", () => {
             })
 
             phase = 2
-        }, 5000);
+        }, 6000);
     }
     if (phase == 2) {
         setTimeout(startAnalize, 10000)

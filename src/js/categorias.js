@@ -2,7 +2,8 @@ const itens = [
     { nome: 'Step 4 & 5', categoriaCorreta: '3' },
     { nome: 'SWP & Loss elimination', categoriaCorreta: '4' },
     { nome: 'Coaching on the floor', categoriaCorreta: '1' },  
-    { nome: 'Step 5 & 6', categoriaCorreta: '2' }
+    { nome: 'Step 5 & 6', categoriaCorreta: '2' },
+    { nome: 'E2E Synchronised', categoriaCorreta: '5' }
 ];
 
 const itensContainer = document.getElementById('itensContainer');

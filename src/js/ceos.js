@@ -42,4 +42,11 @@ function getRandomOffset() {
       }, 4000);
     }
   }, 2000);
+
+  const btnChooseMachine = document.querySelector(".btn-choose-machine")
+  const machinesContainer = document.querySelector(".machines")
+
+  btnChooseMachine.addEventListener("click", ()=>{
+    machinesContainer.classList.remove("d-none")
+  })
   
