@@ -3,8 +3,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   // comment base line for deploy out github pages
-  //base: '/game-quiz-start-machine/',
-  base: './',
+  base: '/game-quiz-start-machine/',
   build: {
     rollupOptions: {
       input: {
