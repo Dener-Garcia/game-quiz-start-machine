@@ -100,14 +100,14 @@
         }
     }
 
-    body{
+    body {
         width: 100vw;
         height: 100vh;
         background-color: #D0CA92;
     }
 
     main {
-  height: 100%;
+        height: 100%;
     }
 
     .map {
@@ -152,27 +152,27 @@
         height: 50px;
     }
 
-    .step{
-    position: absolute;
-    top: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    border-radius: 999px;
-    background-color: var(--colorBgPrimary);
-    font-size: 1.5rem;
-    animation: bouncy2 1s ease infinite alternate;
-    transform: scale(0.5) scaleX(0.2);
-}
-
-@keyframes bouncy2 {
-    to{
-        transform: translateY(-30px) scaleX(1);
+    .step {
+        position: absolute;
+        top: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 999px;
+        background-color: var(--colorBgPrimary);
+        font-size: 1.5rem;
+        animation: bouncy2 1s ease infinite alternate;
+        transform: scale(0.5) scaleX(0.2);
     }
-}
+
+    @keyframes bouncy2 {
+        to {
+            transform: translateY(-30px) scaleX(1);
+        }
+    }
 
     .zoom {
         transform: scale(4.5);
@@ -276,29 +276,31 @@
 
         <div class="brazil-map">
 
-            <img class="brazil" src="/public/assets/images/bg-main.svg" alt="Mapa brasil">
-            
+            <img class="brazil" src="/assets/images/bg-main.svg" alt="Mapa brasil">
+
             <div class="stand modal-game" data-jogo="modal-game" data-link="#" data-concluido="false"
                 style="position: absolute; left: 400px; top: 390px">
-                <img src="./public/assets/images/makr.svg" alt="marcacao" class="mark-atual" />
+                <img src="./assets/images/makr.svg" alt="marcacao" class="mark-atual" />
                 <span class="step">1</span>
             </div>
 
-            <div class="stand bat-atual" data-jogo="kaban" data-link="/src/pages/rpg-factory.html" style="position: absolute; left: 550px; bottom: 150px">
-                <img src="./public/assets/images/makr.svg" alt="marcacao" class="mark-atual" />
+            <div class="stand bat-atual" data-jogo="kaban" data-link="/src/pages/rpg-factory.html"
+                style="position: absolute; left: 550px; bottom: 150px">
+                <img src="./assets/images/makr.svg" alt="marcacao" class="mark-atual" />
                 <span class="step">2</span>
             </div>
 
-            <a class="stand ceos" href="/src/pages/ceos.html" data-jogo="ceos" data-link="/src/pages/ceos.html" style="position: absolute; left: 620px; bottom: 250px">
-                <img src="./public/assets/images/logo-ceos-icon-yellow.svg" alt="logo ceos" class="mark-atual" style="width: 20px;"/>
+            <a class="stand ceos" href="/src/pages/ceos.html" data-jogo="ceos" data-link="/src/pages/ceos.html"
+                style="position: absolute; left: 620px; bottom: 250px">
+                <img src="./assets/images/logo-ceos-icon-yellow.svg" alt="logo ceos" class="mark-atual"
+                    style="width: 20px;" />
             </a>
 
-            <img src="./public/assets/images/player-right-front.svg" alt="player" id="boneco" class="boneco"
+            <img src="./assets/images/player-right-front.svg" alt="player" id="boneco" class="boneco"
                 style="top: 300px; left: 200px;" />
-        </a>
-        <!--
-        <audio style="position: absolute; left: 80px; top: 8px;" src="/public/assets/audios/bg-music-epic1.mp3" autoplay loop controls></audio>
-        -->
+            </a>
+            <audio style="position: absolute; left: 80px; top: 8px;" src="/assets/audios/bg-music-epic1.mp3" autoplay
+                loop controls></audio>
     </main>
     </div>
 </body>
@@ -313,32 +315,32 @@
     let posY = 300;
 
     const itensCategorias = [
-            { nome: 'Brazil', categoriaCorreta: '1' },
-            { nome: 'Argentina', categoriaCorreta: '1' },
-            { nome: 'Germany', categoriaCorreta: '2' },
-            { nome: 'Hungary', categoriaCorreta: '2' },
-            { nome: 'Turkey', categoriaCorreta: '3' },
-            { nome: 'Romania', categoriaCorreta: '3' }
+        { nome: 'Brazil', categoriaCorreta: '1' },
+        { nome: 'Argentina', categoriaCorreta: '1' },
+        { nome: 'Germany', categoriaCorreta: '2' },
+        { nome: 'Hungary', categoriaCorreta: '2' },
+        { nome: 'Turkey', categoriaCorreta: '3' },
+        { nome: 'Romania', categoriaCorreta: '3' }
 
-];
+    ];
 
 
     document.addEventListener('keydown', (e) => {
         switch (e.key) {
             case 'ArrowUp': posY -= 30;
-                boneco.setAttribute("src", "/public/assets/images/player-left.svg");
+                boneco.setAttribute("src", "/assets/images/player-left.svg");
                 audioPlay("walk")
                 break;
             case 'ArrowDown': posY += 30;
-                boneco.setAttribute("src", "/public/assets/images/player-right-front.svg");
+                boneco.setAttribute("src", "/assets/images/player-right-front.svg");
                 audioPlay("walk")
                 break;
             case 'ArrowLeft': posX -= 30;
-                boneco.setAttribute("src", "/public/assets/images/player-left-front.svg");
+                boneco.setAttribute("src", "/assets/images/player-left-front.svg");
                 audioPlay("walk")
                 break;
             case 'ArrowRight': posX += 30;
-                boneco.setAttribute("src", "/public/assets/images/player-right.svg");
+                boneco.setAttribute("src", "/assets/images/player-right.svg");
                 audioPlay("walk")
                 break;
         }
@@ -354,14 +356,14 @@
             const standRect = stand.getBoundingClientRect();
             const bonecoRect = boneco.getBoundingClientRect();
 
-// Verifica se o boneco está sobre o mark usando colisão dos retângulos
-const colisao =
-    bonecoRect.left < standRect.right &&
-    bonecoRect.right > standRect.left &&
-    bonecoRect.top < standRect.bottom &&
-    bonecoRect.bottom > standRect.top;
+            // Verifica se o boneco está sobre o mark usando colisão dos retângulos
+            const colisao =
+                bonecoRect.left < standRect.right &&
+                bonecoRect.right > standRect.left &&
+                bonecoRect.top < standRect.bottom &&
+                bonecoRect.bottom > standRect.top;
 
-if (colisao) {
+            if (colisao) {
                 audioPlay("yeah");
                 const jaConcluido = stand.getAttribute('data-concluido') === 'true';
                 console.log(jaConcluido)
@@ -385,13 +387,13 @@ if (colisao) {
                     }, 1500);
                 }
                 setTimeout(() => {
-                        window.location.href = stand.dataset.link;
-                    }, 1500);
+                    window.location.href = stand.dataset.link;
+                }, 1500);
             }
         });
     }
     function audioPlay(song) {
-        const audio = new Audio(`/public/assets/audios/${song}.mp3`);
+        const audio = new Audio(`/assets/audios/${song}.mp3`);
         audio.play();
     }
 
