@@ -276,31 +276,31 @@
 
         <div class="brazil-map">
 
-            <img class="brazil" src="/assets/images/bg-main.svg" alt="Mapa brasil">
+            <img class="brazil" src="/public/assets/images/bg-main.svg" alt="Mapa brasil">
 
             <div class="stand modal-game" data-jogo="modal-game" data-link="#" data-concluido="false"
                 style="position: absolute; left: 400px; top: 390px">
-                <img src="/assets/images/makr.svg" alt="marcacao" class="mark-atual" />
+                <img src="/public/assets/images/makr.svg" alt="marcacao" class="mark-atual" />
                 <span class="step">1</span>
             </div>
 
             <div class="stand bat-atual" data-jogo="kaban" data-link="src/pages/rpg-factory.html"
                 style="position: absolute; left: 550px; bottom: 150px">
-                <img src="/assets/images/makr.svg" alt="marcacao" class="mark-atual" />
+                <img src="/public/assets/images/makr.svg" alt="marcacao" class="mark-atual" />
                 <span class="step">2</span>
             </div>
 
             <a class="stand ceos" href="src/pages/ceos.html" data-jogo="ceos" data-link="src/pages/ceos.html"
                 style="position: absolute; left: 620px; bottom: 250px">
-                <img src="/assets/images/logo-ceos-icon-yellow.svg" alt="logo ceos" class="mark-atual"
+                <img src="/public/assets/images/logo-ceos-icon-yellow.svg" alt="logo ceos" class="mark-atual"
                     style="width: 20px;" />
             </a>
 
-            <img src="/assets/images/player-right-front.svg" alt="player" id="boneco" class="boneco"
+            <img src="/public/assets/images/player-right-front.svg" alt="player" id="boneco" class="boneco"
                 style="top: 300px; left: 200px;" />
             </a>
-            <audio style="position: absolute; left: 80px; top: 8px;" src="/assets/audios/bg-music-epic1.mp3" autoplay
-                loop controls></audio>
+            <audio style="position: absolute; left: 80px; top: 8px;" src="/public/assets/audios/bg-music-epic1.mp3"
+                autoplay loop controls></audio>
     </main>
     </div>
 </body>
@@ -328,19 +328,19 @@
     document.addEventListener('keydown', (e) => {
         switch (e.key) {
             case 'ArrowUp': posY -= 30;
-                boneco.setAttribute("src", "/assets/images/player-left.svg");
+                boneco.setAttribute("src", "/public/assets/images/player-left.svg");
                 audioPlay("walk")
                 break;
             case 'ArrowDown': posY += 30;
-                boneco.setAttribute("src", "/assets/images/player-right-front.svg");
+                boneco.setAttribute("src", "/public/assets/images/player-right-front.svg");
                 audioPlay("walk")
                 break;
             case 'ArrowLeft': posX -= 30;
-                boneco.setAttribute("src", "/assets/images/player-left-front.svg");
+                boneco.setAttribute("src", "/public/assets/images/player-left-front.svg");
                 audioPlay("walk")
                 break;
             case 'ArrowRight': posX += 30;
-                boneco.setAttribute("src", "/assets/images/player-right.svg");
+                boneco.setAttribute("src", "/public/assets/images/player-right.svg");
                 audioPlay("walk")
                 break;
         }
@@ -393,7 +393,7 @@
         });
     }
     function audioPlay(song) {
-        const audio = new Audio(`/assets/audios/${song}.mp3`);
+        const audio = new Audio(`/public/assets/audios/${song}.mp3`);
         audio.play();
     }
 
