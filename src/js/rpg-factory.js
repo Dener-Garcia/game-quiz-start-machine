@@ -24,22 +24,22 @@ window.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('keydown', (e) => {
     switch (e.key) {
-        case 'ArrowUp': posY -= 30; 
-        boneco.setAttribute("src", "/public/assets/images/player-left.svg");
-        audioPlay("walk")
-        break;
-        case 'ArrowDown': posY += 30; 
-        boneco.setAttribute("src", "/public/assets/images/player-right-front.svg");
-        audioPlay("walk")
-        break;
+        case 'ArrowUp': posY -= 30;
+            boneco.setAttribute("src", "../../assets/images/player-left.svg");
+            audioPlay("walk")
+            break;
+        case 'ArrowDown': posY += 30;
+            boneco.setAttribute("src", "../../assets/images/player-right-front.svg");
+            audioPlay("walk")
+            break;
         case 'ArrowLeft': posX -= 30;
-        boneco.setAttribute("src", "/public/assets/images/player-left-front.svg");
-        audioPlay("walk")
-        break;
-        case 'ArrowRight': posX += 30; 
-        boneco.setAttribute("src", "/public/assets/images/player-right.svg");
-        audioPlay("walk")
-        break;
+            boneco.setAttribute("src", "../../assets/images/player-left-front.svg");
+            audioPlay("walk")
+            break;
+        case 'ArrowRight': posX += 30;
+            boneco.setAttribute("src", "../../assets/images/player-right.svg");
+            audioPlay("walk")
+            break;
     }
     boneco.style.top = posY + 'px';
     boneco.style.left = posX + 'px';
@@ -65,7 +65,7 @@ function verificarProximidade() {
             jogoAtual = stand.dataset.link;
             botaoJogo.style.display = 'block';
             console.log("nome jogo", stand)
-            botaoJogo.innerText= stand.dataset.jogo
+            botaoJogo.innerText = stand.dataset.jogo
             audioPlay("yeah")
         }
     });
@@ -81,6 +81,6 @@ botaoJogo.addEventListener('click', () => {
 });
 
 function audioPlay(song) {
-    const audio = new Audio(`/public/assets/audios/${song}.mp3`);
+    const audio = new Audio(`../../assets/audios/${song}.mp3`);
     audio.play();
 }
