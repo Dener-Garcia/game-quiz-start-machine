@@ -1,11 +1,11 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
-import ghPages from 'vite-plugin-gh-pages'
+import { ghPages } from 'vite-plugin-gh-pages'
 
 export default defineConfig({
-  plugins: [ghPages()],
   // comment base line for deploy out github pages
   base: '/game-quiz-start-machine/',
+  plugins: [ghPages()],
   build: {
     rollupOptions: {
       input: {
