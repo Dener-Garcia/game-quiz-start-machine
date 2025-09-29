@@ -1,12 +1,12 @@
 {
-    "scripts": {
-      "dev": "vite",
-      "build": "vite build",
-      "preview": "vite preview"
-    },
+  "name": "site-portfolio-dener-criarbr",
+  "homepage": "https://dener-garcia.github.io/game-quiz-start-machine",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "devDependencies": {
     "vite": "^6.3.6"
   }
-
-  
 }
