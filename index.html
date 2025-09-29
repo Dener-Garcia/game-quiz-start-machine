@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+    <title>BAT - BRAZIL</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        --font-weight: 400;
+        --colorBgPrimary: #F3F3F6;
+        --colorBgSecondary: #ffffff;
+        --colorAccentPrimary: #2525D0;
+        --colorAccentPrimaryHover: #2929A3;
+        --colorAccentSecondary: #F8F8FC;
+        --colorAccentSecondaryHover: #EAEAF6;
+        --colorAccentTertiary: #5A328A;
+        --colorFeedbackInfo: #EEF2FC;
+        --colorFeedbackInfoAccent: #A8BDF0;
+        --colorFeedbackError: #FDEDF2;
+        --colorFeedbackErrorAccent: #ED5A8B;
+        --colorFeedbackWarning: #F8FAD1;
+        --colorFeedbackWarningAccent: #E9C534;
+        --colorFeedbackSuccess: #BCF0D6;
+        --colorFeedbackSuccessAccent: #16CA52;
+        --colorContrastDark: #F4F4F6;
+        --colorContrastLight: #26262C;
+        --colorNeutral100: #383842;
+        --colorNeutral200: #676779;
+        --colorNeutral300: #9C9CAB;
+        --colorNeutral400: #D8D8DE;
+        --colorNeutral500: #E9E9EC;
+        --fontTitleHero: 3rem;
+        --fontSubTitle: 2rem;
+        --fontTextLarge: 1.5rem;
+        --fontTextMedium: 1.25rem;
+        --fontText: 1rem;
+        --fontLabel: 0.875rem;
+        --fontSmallLabel: 0.75rem;
+
+        --colorAccent: #9381ff;
+        --colorAccentHover: #b8b8ff;
+        --colorAccentText: #5e2bff;
+    }
+
+    .cta {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .btn-primary {
+        display: flex;
+        justify-content: center;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        border: solid 2px var(--colorAccent);
+        border-radius: 1rem;
+        background-color: var(--colorAccentPrimary);
+        color: var(--colorContrastDark);
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            background-color: var(--colorAccentPrimaryHover);
+        }
+    }
+
+    .btn-secondary {
+        display: flex;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        border: solid 1px var(--colorAccent);
+        border-radius: 1rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--colorContrastLight);
+        background-color: transparent;
+        cursor: pointer;
+
+        transition: 0.2s;
+
+        &:hover {
+            background-color: var(--colorAccentPrimary);
+            color: var(--colorContrastDark);
+        }
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        background-color: #D0CA92;
+    }
+
+    main {
+        height: 100%;
+    }
+
+    .map {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brazil-map {
+        position: relative;
+        width: 1100px;
+        height: 700px;
+    }
+
+    .brazil {
+        width: 1100px;
+        height: 100%;
+        position: relative;
+        transition: 1s ease;
+        transform-origin: 600px 600px;
+
+    }
+
+    .boneco {
+        height: 100px;
+        position: absolute;
+    }
+
+    .stand {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        left: 550px;
+        bottom: 200px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .mark-atual {
+        width: 50px;
+        height: 50px;
+    }
+
+    .step {
+        position: absolute;
+        top: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 999px;
+        background-color: var(--colorBgPrimary);
+        font-size: 1.5rem;
+        animation: bouncy2 1s ease infinite alternate;
+        transform: scale(0.5) scaleX(0.2);
+    }
+
+    @keyframes bouncy2 {
+        to {
+            transform: translateY(-30px) scaleX(1);
+        }
+    }
+
+    .zoom {
+        transform: scale(4.5);
+    }
+
+    .modal-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+    }
+
+    .modal-content {
+        position: relative;
+        padding: 20px;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 800px;
+        text-align: center;
+        background-color: var(--colorBgPrimary);
+    }
+
+
+    .categorias-container {
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        margin-top: 1rem;
+        gap: 0.5rem;
+    }
+
+    .categoria {
+        width: 200px;
+        min-height: 100px;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px dashed var(--colorAccentPrimary);
+        background-color: var(--colorNeutral400);
+    }
+
+    .itens-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+    }
+
+    .item {
+        width: 100%;
+        max-width: 300px;
+        padding: 8px;
+        margin-top: 0.5rem;
+        border-radius: 5px;
+        background-color: var(--colorFeedbackInfoAccent);
+        border: solid 2px var(--colorFeedbackInfo);
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: grab;
+    }
+
+    .correct {
+        background-color: #90ee90;
+    }
+
+    .wrong {
+        background-color: #ff6b6b;
+    }
+</style>
+
+<body>
+    <main class="map">
+        <!-- Modal do Mini-Jogo -->
+        <div id="modalJogo" class="modal-container">
+            <div class="modal-content">
+
+                <h2>Drag the factory for your correct DRBU</h2>
+
+                <div class="categorias-container">
+                    <div class="categoria" data-categoria="1">Latam South</div>
+                    <div class="categoria" data-categoria="2">Central Europe</div>
+                    <div class="categoria" data-categoria="3">Southeastern Europe</div>
+                </div>
+                <div id="itensContainer" class="itens-container"></div>
+                <div class="cta">
+                    <button class="btn-primary" onclick="verificarCategorias()">Check my solution</button>
+                    <button class="btn-secondary" onclick="fecharModal()">Close Challenge</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="brazil-map">
+
+            <img class="brazil" src="assets/images/bg-main.svg" alt="Mapa brasil">
+
+            <div class="stand modal-game" data-jogo="modal-game" data-link="#" data-concluido="false"
+                style="position: absolute; left: 400px; top: 390px">
+                <img src="assets/images/makr.svg" alt="marcacao" class="mark-atual" />
+                <span class="step">1</span>
+            </div>
+
+            <div class="stand bat-atual" data-jogo="kaban" data-link="src/pages/rpg-factory.html"
+                style="position: absolute; left: 550px; bottom: 150px">
+                <img src="assets/images/makr.svg" alt="marcacao" class="mark-atual" />
+                <span class="step">2</span>
+            </div>
+
+            <a class="stand ceos" href="src/pages/ceos.html" data-jogo="ceos" data-link="src/pages/ceos.html"
+                style="position: absolute; left: 620px; bottom: 250px">
+                <img src="assets/images/logo-ceos-icon-yellow.svg" alt="logo ceos" class="mark-atual"
+                    style="width: 20px;" />
+            </a>
+
+            <img src="assets/images/player-right-front.svg" alt="player" id="boneco" class="boneco"
+                style="top: 300px; left: 200px;" />
+            </a>
+            <audio style="position: absolute; left: 80px; top: 8px;" src="assets/audios/bg-music-epic1.mp3" autoplay
+                loop controls></audio>
+    </main>
+    </div>
+</body>
+
+<script>
+    const boneco = document.getElementById('boneco');
+    const stands = document.querySelectorAll('.stand');
+    const brazil = document.querySelector(".brazil")
+    const game = document.querySelector("#modalJogo")
+
+    let posX = 200;
+    let posY = 300;
+
+    const itensCategorias = [
+        { nome: 'Brazil', categoriaCorreta: '1' },
+        { nome: 'Argentina', categoriaCorreta: '1' },
+        { nome: 'Germany', categoriaCorreta: '2' },
+        { nome: 'Hungary', categoriaCorreta: '2' },
+        { nome: 'Turkey', categoriaCorreta: '3' },
+        { nome: 'Romania', categoriaCorreta: '3' }
+
+    ];
+
+
+    document.addEventListener('keydown', (e) => {
+        switch (e.key) {
+            case 'ArrowUp': posY -= 30;
+                boneco.setAttribute("src", "assets/images/player-left.svg");
+                audioPlay("walk")
+                break;
+            case 'ArrowDown': posY += 30;
+                boneco.setAttribute("src", "assets/images/player-right-front.svg");
+                audioPlay("walk")
+                break;
+            case 'ArrowLeft': posX -= 30;
+                boneco.setAttribute("src", "assets/images/player-left-front.svg");
+                audioPlay("walk")
+                break;
+            case 'ArrowRight': posX += 30;
+                boneco.setAttribute("src", "assets/images/player-right.svg");
+                audioPlay("walk")
+                break;
+        }
+        boneco.style.top = posY + 'px';
+        boneco.style.left = posX + 'px';
+        verificarProximidade();
+    });
+
+    function verificarProximidade() {
+        jogoAtual = null;
+
+        stands.forEach(stand => {
+            const standRect = stand.getBoundingClientRect();
+            const bonecoRect = boneco.getBoundingClientRect();
+
+            // Verifica se o boneco está sobre o mark usando colisão dos retângulos
+            const colisao =
+                bonecoRect.left < standRect.right &&
+                bonecoRect.right > standRect.left &&
+                bonecoRect.top < standRect.bottom &&
+                bonecoRect.bottom > standRect.top;
+
+            if (colisao) {
+                audioPlay("yeah");
+                const jaConcluido = stand.getAttribute('data-concluido') === 'true';
+                console.log(jaConcluido)
+
+                if (jaConcluido) {
+                    console.log('Esse já foi concluído, ignorando:', stand);
+                    return; // Pula pra próxima iteração
+                }
+
+                if (stand.classList.contains('bat-atual')) {
+                    localStorage.removeItem(posX)
+                    localStorage.removeItem(posX)
+                    brazil.classList.add("zoom");
+                    setTimeout(() => {
+                        window.location.href = stand.dataset.link;
+                    }, 1500);
+                } else if (stand.classList.contains('modal-game')) {
+                    // Abre o modal
+                    setTimeout(() => {
+                        abrirModalJogo(stand);
+                    }, 1500);
+                }
+                setTimeout(() => {
+                    window.location.href = stand.dataset.link;
+                }, 1500);
+            }
+        });
+    }
+    function audioPlay(song) {
+        const audio = new Audio(`assets/audios/${song}.mp3`);
+        audio.play();
+    }
+
+    // ############## functions from modal game
+
+    function abrirModalJogo(stand) {
+        jogoAtualStand = stand;
+        const modal = document.getElementById('modalJogo');
+        modal.style.display = 'flex';
+        iniciarJogoArrastar(); // Inicia o mini-jogo dentro do modal
+    }
+
+    function fecharModal() {
+        const modal = document.getElementById('modalJogo');
+        modal.style.display = 'none';
+    }
+
+    function iniciarJogoArrastar() {
+        const itensContainer = document.getElementById('itensContainer');
+        itensContainer.innerHTML = '';
+
+        itensCategorias.forEach((item, index) => {
+            const divItem = document.createElement('div');
+            divItem.classList.add('item');
+            divItem.textContent = item.nome;
+            divItem.dataset.index = index;
+            divItem.setAttribute('draggable', 'true');
+
+            divItem.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', index);
+                audioPlay("pop")
+            });
+
+            itensContainer.appendChild(divItem);
+        });
+
+        const categorias = document.querySelectorAll('.categoria');
+
+        categorias.forEach(categoria => {
+            categoria.addEventListener('dragover', (e) => e.preventDefault());
+
+            categoria.addEventListener('drop', (e) => {
+                const indexItem = e.dataTransfer.getData('text/plain');
+                const item = document.querySelector(`.item[data-index="${indexItem}"]`);
+                audioPlay("pickup")
+                categoria.appendChild(item);
+            });
+        });
+    }
+
+    function verificarCategorias() {
+        let acertos = 0;
+        itensCategorias.forEach((item, index) => {
+            const elementoItem = document.querySelector(`.item[data-index="${index}"]`);
+            const categoriaPai = elementoItem.parentElement.dataset.categoria;
+
+            if (categoriaPai === item.categoriaCorreta) {
+                elementoItem.classList.add('correct');
+                elementoItem.classList.remove('wrong');
+                acertos++;
+            } else {
+                elementoItem.classList.add('wrong');
+                elementoItem.classList.remove('correct');
+            }
+        });
+
+        if (acertos === itensCategorias.length) {
+            if (jogoAtualStand) {
+                jogoAtualStand.setAttribute('data-concluido', 'true');
+            }
+            audioPlay("short-applauses")
+            confetti()
+            setTimeout(fecharModal, 3000)
+        }
+    }
+</script>
+
+</html>
